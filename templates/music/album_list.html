@@ -1,0 +1,23 @@
+{% extends 'music/base.html' %}
+{% block body_block %}
+    <h3>Name: {{ singer_info.name }}</h3>
+    <h3>Instrument: {{ singer_info.instrument }}</h3>
+    <a href="" class="btn btn-info btn-md">Update</a> <a href="" class="btn btn-danger btn-md">Delete</a>
+    <hr>
+    <br>
+    <h2>List of Album:</h2>
+    <table class="table table-borderd" border="1">
+        <tr>
+            <th>Name</th>
+            <th>Release Date</th>
+            <th>Rating</th>
+        </tr>
+        <tr>
+            {% for album in album_list %}
+            <td><a href="{% url 'music:song_list' album_id=album.id %}">{{ album.name }}</a></td>
+            <td>{{ album.release_date }}</td>
+            <td>{{ album.rating }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+{% endblock %}

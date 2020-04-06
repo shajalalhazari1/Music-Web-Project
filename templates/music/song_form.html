@@ -1,0 +1,9 @@
+{% extends 'music/base.html' %}
+{% block body_block %}
+    <h2>{{ title }}:</h2>
+    <form action="" method="POST" style="padding-top: 25px;">
+        {{ song_form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Add" name="subnit" class="btn btn-primary btn=md">
+    </form>
+{% endblock %}
