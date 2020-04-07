@@ -4,14 +4,17 @@
     <h3>Singer Name: {{ album_info.singer }}</h3>
     <h3>Release Date: {{ album_info.release_date }}</h3>
     <h3>Rating: {{ album_info.rating }}</h3>
-    <a href="" class="btn btn-info btn-md">Update</a> <a href="" class="btn btn-danger btn-md">Delete</a>
-    <hr>
     <br>
+    <a href="{% url 'music:edit_album' album_id=album_info.id %}" class="btn btn-info btn-md">Edit</a>
+    <br>
+    <a href="#" class="btn btn-danger btn-md">Delete</a>
+    <br>
+    <hr>
     <h2>List of song:</h2>
     <ol>
         {% for song in song_list %}
         <li>
-            <h3><a href="#">{{ song.name }}</a></h3>
+            <h3><a href="{% url 'music:edit_song' song_id=song.id %}">{{ song.name }}</a></h3>
         </li>
         {% endfor %}
     </ol>

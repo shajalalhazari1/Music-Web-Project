@@ -1,0 +1,16 @@
+{% extends 'music/base.html' %}
+{% block body_block %}
+    <h2>{{ title }}:</h2>
+    {% if success_text %}
+        <div class="alert alert-success">
+            {{ success_text }}
+        </div>
+    {% endif %}
+    <form action="" method="POST">
+        {{ edit_album.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Update" name="update" class="btn btn-success btn-md">
+    </form>
+    <br>
+    <a href="#" class="btn btn-danger btn-md">Cancle</a>
+{% endblock %}

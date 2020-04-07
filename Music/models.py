@@ -10,8 +10,8 @@ class Singer(models.Model):
 
 
 class Album(models.Model):
-    singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
+    singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
     release_date = models.DateField()
     num_star = ((1, 'Wrost'),(2,'Bad'),(3,'Not Bad'),(4,'Good'),(5,'Excellent!'))
     rating = models.IntegerField(choices=num_star)
@@ -21,10 +21,10 @@ class Album(models.Model):
 
 
 class Song(models.Model):
+    name = models.CharField(max_length=100)
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
     other_singer = models.CharField(max_length=100, blank=True)
-    name = models.CharField(max_length=100)
 
     def __str__(self):
         return "{} form {} {}".format(self.name, self.album, self.other_singer)
