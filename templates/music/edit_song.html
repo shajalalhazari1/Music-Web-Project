@@ -7,5 +7,5 @@
         <input type="submit" value="Update" class="btn btn-success btn-md">
     </form>
     <br>
-    <a href="#" class="btn btn-danger btn-md">Cancle</a>
+    <a href="{% url 'music:delete_song' song_id=song_id %}" class="btn btn-danger btn-md" onclick="return confirm('Delete This Song?')">Delete</a>
 {% endblock %}

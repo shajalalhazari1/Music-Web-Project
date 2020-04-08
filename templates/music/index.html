@@ -1,6 +1,7 @@
 {% extends 'music/base.html' %}
 {% block body_block %}
-    <h2>List of Singer:</h2>
+        {% if singer_list %}
+        <h2>List of Singer:</h2>
         <ol>
             {% for singer in singer_list %}
             <li>
@@ -8,4 +9,7 @@
             </li>
             {% endfor %}
         </ol>
+        {% else %}
+        <h2>There is no Singer.</h2>
+        {% endif %}
 {% endblock %}
