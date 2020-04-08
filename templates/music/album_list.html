@@ -8,20 +8,23 @@
         class="btn btn-danger btn-md" onclick="return confirm('Delete This Singer?')">Delete</a>
     <hr>
     <br>
-    <h2>List of Album:</h2>
-    <table class="table table-borderd" border="1">
-        <tr>
-            <th>Name</th>
-            <th>Release Date</th>
-            <th>Rating</th>
-        </tr>
-        {% for album in album_list %}
+    {% if album_list %}
+        <h2>List of Album:</h2>
+        <table class="table table-borderd" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Release Date</th>
+                <th>Rating</th>
+            </tr>
+            {% for album in album_list %}
             <tr>
                 <td><a href="{% url 'music:song_list' album_id=album.id %}">{{ album.name }}</a></td>
                 <td>{{ album.release_date }}</td>
                 <td>{{ album.rating }}</td>
             </tr>
-        {% endfor %}
-    </table>
-    <br>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>There is no Album.</h2>
+    {% endif %}
 {% endblock %}

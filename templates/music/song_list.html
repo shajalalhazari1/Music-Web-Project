@@ -7,14 +7,17 @@
     <br>
     <a href="{% url 'music:edit_album' album_id=album_info.id %}" class="btn btn-info btn-md">Edit</a> <a href="{% url 'music:delete_album' album_id=album_info.id %}"
         class="btn btn-danger btn-md" onclick="return confirm('Delete This Album?')">Delete</a>
-    <br>
     <hr>
-    <h2>List of song:</h2>
-    <ol>
-        {% for song in song_list %}
-        <li>
-            <h3><a href="{% url 'music:edit_song' song_id=song.id %}">{{ song.name }}</a></h3>
-        </li>
-        {% endfor %}
-    </ol>
+    {% if song_list %}
+        <h2>List of song:</h2>
+        <ol>
+            {% for song in song_list %}
+            <li>
+                <h3><a href="{% url 'music:edit_song' song_id=song.id %}">{{ song.name }}</a></h3>
+            </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h2>There is no Song.</h2>
+    {% endif %}
 {% endblock %}

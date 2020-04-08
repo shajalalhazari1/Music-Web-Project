@@ -4,9 +4,9 @@ from django.db.models import Avg
 from . import models
 from . import forms
 
-# Create your views here.
 
-# Home Page
+
+# Create your views here.
 def index(request):
     singer_list = models.Singer.objects.all()
     diction = {
@@ -16,7 +16,6 @@ def index(request):
     return render(request, 'music/index.html', context=diction)
 
 
-#List of Albums, Song
 def album_list(request, singer_id):
     singer_info = models.Singer.objects.get(pk=singer_id)
     album_list = models.Album.objects.filter(singer=singer_info)
@@ -42,7 +41,6 @@ def song_list(request, album_id):
     return render(request, 'music/song_list.html', context=diction)
 
 
-#Form to add Album, Singer and Song
 def add_singer(request):
     form = forms.SingerForm()
     if request.method == "POST":
@@ -85,7 +83,6 @@ def add_song(request):
     return render(request, 'music/song_form.html', context=diction)
 
 
-#For Editing
 def edit_singer(request, singer_id):
     singer_info = models.Singer.objects.get(pk=singer_id)
     form = forms.SingerForm(instance=singer_info)
@@ -129,7 +126,6 @@ def edit_song(request, song_id):
     return render(request, 'music/edit_song.html', context=diction)
 
 
-# For Deleting
 def delete_singer(request, singer_id):
     singer = models.Singer.objects.get(pk=singer_id).delete()
     diction = {
